@@ -8,12 +8,18 @@
   width: 100%;
 }
 
+.select-wrap {
+  margin-bottom: 15px;
+}
+
 .currency-select {
   width: 100px;
 }
 
 .select-currency-title {
   margin-right: 10px;
+  font-size: 16px;
+  color: #5e5e5e;
 }
 
 .table-wrap {

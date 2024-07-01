@@ -1,3 +1,4 @@
+export const appSourceCode: string = `
 import { useEffect, useState, FC, useMemo } from "react";
 import "./App.css";
 import {
@@ -78,7 +79,7 @@ type CryptoPricesData = {
 
 function formatNumber(num: number | null): string {
   if (num === null) return "--";
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return num.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",");
 }
 
 function formatLargeNumber(num: number | null): string {
@@ -126,9 +127,7 @@ const PriceChangePercentage: FC<PriceChangePercentageProps> = ({
             <CaretUpOutlined className="positive_percentage caret" />
           )}
           <Text
-            className={`${
-              percentage < 0 ? "negative_percentage" : "positive_percentage"
-            } ${"percentage"}`}
+            className={\`\${ percentage < 0 ? "negative_percentage" : "positive_percentage"} \${"percentage"}\`}
           >
             {percentage.toFixed(2)}&nbsp;%
           </Text>
@@ -319,8 +318,7 @@ const CoinsMarketsTable: FC<CoinsMarketsTableProps> = ({
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${rows}&page=${page}&sparkline=false`
-      );
+        \`https://api.coingecko.com/api/v3/coins/markets?vs_currency=\${currency}&order=market_cap_desc&per_page=\${rows}&page=\${page}&sparkline=false\`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -467,7 +465,7 @@ const CoinsMarketsTable: FC<CoinsMarketsTableProps> = ({
         pagination={{
           total: TOTAL_COUNT,
           showTotal: (total, range) =>
-            `Showing ${range[0]}-${range[1]} out of ${total} items`,
+            \`Showing \${range[0]}-\${range[1]} out of \${total} items\`,
           defaultCurrent: page,
           defaultPageSize: rows,
           pageSizeOptions: ["5", "10", "20", "50", "100"],
@@ -533,3 +531,4 @@ function App() {
 }
 
 export default App;
+`;
