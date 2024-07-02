@@ -337,6 +337,13 @@ const CoinsMarketsTable: FC<CoinsMarketsTableProps> = ({
 
   useEffect(() => {
     fetchData(currency, rows, page);
+
+    const intervalHandle = setInterval(() => {
+      fetchData(currency, rows, page);
+    }, 60000);
+
+    return () => clearInterval(intervalHandle);
+
   }, [currency, rows, page]);
 
   const columns: TableColumnsType<CryptoPricesData> = useMemo(
@@ -442,7 +449,7 @@ const CoinsMarketsTable: FC<CoinsMarketsTableProps> = ({
     setSelectedRow(data);
     setIsCryptoModalOpen(true);
   };
-  
+
   return (
     <>
       <Title level={2}>Coins & Markets</Title>
@@ -512,10 +519,6 @@ function App() {
   const updateCurrency = (value: string) => {
     localStorage.setItem("currency", value);
   };
-
-  console.log("page", page);
-  console.log("rows", rows);
-  console.log("currency", currency);
 
   return (
     <div className="wrapper">
