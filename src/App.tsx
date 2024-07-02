@@ -218,7 +218,7 @@ const CryptoDataElementsList: FC<CryptoDataElementsListProps> = ({
     {
       title: "Fully diluted valuation",
       tooltipText:
-        "The total value of a cryptocurrency project considering all of its tokens that are in circulation.",
+        "FDV is calculated by multiplying the token price by the total supply, giving an estimate of the cryptocurrency's market cap when all tokens are in circulation.",
       value: formatLargeNumber(data.fully_diluted_valuation),
       currency: currencies[currency].symbol,
     },
@@ -343,7 +343,6 @@ const CoinsMarketsTable: FC<CoinsMarketsTableProps> = ({
     }, 60000);
 
     return () => clearInterval(intervalHandle);
-
   }, [currency, rows, page]);
 
   const columns: TableColumnsType<CryptoPricesData> = useMemo(
@@ -402,6 +401,7 @@ const CoinsMarketsTable: FC<CoinsMarketsTableProps> = ({
             {formatNumber(record.market_cap)}
           </Text>
         ),
+        width: 200,
       },
       {
         title: "Volume(24h)",
@@ -413,6 +413,7 @@ const CoinsMarketsTable: FC<CoinsMarketsTableProps> = ({
             {formatNumber(record.total_volume)}
           </Text>
         ),
+        width: 200,
       },
       {
         title: "Circulating Supply",

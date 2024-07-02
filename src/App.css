@@ -93,3 +93,16 @@
 .tooltip-card {
   min-width: 330px !important;
 }
+
+/* pagination  */
+.ant-table-wrapper .ant-table-pagination.ant-pagination {
+  margin: 30px 0 !important;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: #3ae1c2 !important;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  border-color: #3ae1c2 !important;
+}
